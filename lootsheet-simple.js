@@ -325,7 +325,7 @@ class LootSheet5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC {
     // Inventory Editing
     // Add event listener for showing the item sheet
     html
-      .find(".item-name")
+      .find(".item-edit")
       .click( async (ev) => {
         const itemId = $(ev.currentTarget).parents(".item").attr("data-item-id");
         const item = this.actor.getEmbeddedDocument("Item", itemId);
