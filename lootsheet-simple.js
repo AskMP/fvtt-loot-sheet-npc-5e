@@ -319,6 +319,24 @@ class LootSheet5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC {
 
     // Roll Table
     //html.find('.sheet-type').change(ev => this._changeSheetType(ev, html));
+
+
+  /* -------------------------------------------- */
+    // Inventory Editing
+    // Update Inventory Item Price
+    html
+      .find(".denomination-updater")
+      .change( async (ev) => {
+        const itemId = $(ev.currentTarget).parents(".item").attr("data-item-id");
+        const item = this.actor.getEmbeddedDocument("Item", itemId);
+        const denomination = ev.currentTarget.value;
+        item.update({
+          "system.price": {
+            value: item.system.price.value,
+            denomination: denomination,
+          },
+        });
+      });
   }
 
   /* -------------------------------------------- */

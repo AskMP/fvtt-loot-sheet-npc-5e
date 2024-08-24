@@ -232,8 +232,24 @@
                                                 <input type="text" value="{{item.system.quantity}}" placeholder="0" data-dtype="Number" data-name="system.quantity">
                                             </div>
                                             <div class="item-detail item-price">
-                                                <span class="item-price-label"></i> {{ lootsheetprice item.system.price.value ../../priceModifier }} </span>
-                                                <label class="denomination {{ item.system.price.denomination }}">&nbsp;</label>
+                                                {{#if ../../owner}}
+                                                    <div>
+                                                        <input type="text" value="{{item.system.price.value}}" placeholder="0" data-dtype="Number" data-name="system.price.value">
+                                                    </div>
+                                                    <div>
+                                                        <select class="denomination-updater" value="{{item.system.price.denomination}}" data-name="system.price.denomination">
+                                                            <option value="pp" {{#ifeq item.system.price.denomination "pp"}}selected{{/ifeq}}>pp</option>
+                                                            <option value="gp" {{#ifeq item.system.price.denomination "gp"}}selected{{/ifeq}}>gp</option>
+                                                            <option value="ep" {{#ifeq item.system.price.denomination "ep"}}selected{{/ifeq}}>ep</option>
+                                                            <option value="sp" {{#ifeq item.system.price.denomination "sp"}}selected{{/ifeq}}>sp</option>
+                                                            <option value="cp" {{#ifeq item.system.price.denomination "cp"}}selected{{/ifeq}}>cp</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="denomination {{ item.system.price.denomination }}">&nbsp;</label>
+                                                {{else}}
+                                                    <span class="item-price-label"></i> {{ lootsheetprice item.system.price.value ../../priceModifier }} </span>
+                                                    <label class="denomination {{ item.system.price.denomination }}">&nbsp;</label>
+                                                {{/if}}
                                             </div>
 
                                             
