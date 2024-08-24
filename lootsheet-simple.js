@@ -333,6 +333,15 @@ class LootSheet5eNPC extends dnd5e.applications.actor.ActorSheet5eNPC {
         item.sheet.render(true);
       });
 
+    // This allows for users to open the item sheet to see the details
+    html
+      .find(".item-name")
+      .click( async (ev) => {
+        const itemId = $(ev.currentTarget).parents(".item").attr("data-item-id");
+        const item = this.actor.getEmbeddedDocument("Item", itemId);
+        item.sheet.render(true);
+      });
+
   }
 
   /* -------------------------------------------- */
